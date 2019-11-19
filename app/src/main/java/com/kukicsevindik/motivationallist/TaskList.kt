@@ -5,9 +5,11 @@ import android.os.Parcelable
 
 /* Created by Tatjana Kukic and Mert Sevindik on 09.11.2019 */
 
-class TaskList(val name: String, val tasks: ArrayList<String> = ArrayList<String>()) : Parcelable {
+class TaskList(val name: String?, val tasks: ArrayList<String> = ArrayList<String>()) : Parcelable {
 
-    constructor(source: Parcel) : this (source.readString(), source.createStringArrayList())
+    constructor(source: Parcel) : this (source.readString(),
+        source.createStringArrayList() as ArrayList<String>
+    )
 
     override fun describeContents(): Int = 0
 
